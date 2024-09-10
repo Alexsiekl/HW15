@@ -13,13 +13,18 @@ public class Main {
         System.out.println("Введите Вашу фамилию имя и отчество!");
         String input = new Scanner(System.in).nextLine().trim();
         boolean valid = true;
+        int count = 0;
        for (int i = 0; i < input.length(); i++) {
            if (!CORRECT.contains(String.valueOf(input.charAt(i)))) {
                valid = false;
                break;
-           }//todo код писать тут
+           }
+           if (input.charAt(i) == ' ') {
+               count ++;
+           }
        }
-       if (valid) {
+       if (valid  && count == 2) {
+
            System.out.println("Фамилия: " + input.substring(0, input.indexOf(' ')).trim() + "\nИмя: " + input.substring(input.indexOf(' '), input.lastIndexOf(' ')).trim() + "\nОтчество: " + input.substring(input.lastIndexOf(' ')).trim());
        } else {
            System.out.println("Введённая строка не является ФИО!");
